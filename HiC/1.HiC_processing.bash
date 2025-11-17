@@ -15,11 +15,11 @@ HiC-Pro_3.1.0/bin/HiC-Pro -i $DATA_DIR -o $OUTPUT_DIR -c $CONFIG -p
 HiC-Pro_3.1.0/bin/utils/hicpro2higlass.sh -i $OUTPUT_DIR/hic_results/data/${sample_name}/${sample_name}.allValidPairs \
 -r 5000 -c $CHR_SIZE -n -t $TMP -o $OUTPUT_DIR2
 cooler zoomify \
-    -r 5000,10000,25000,50000,100000,250000,500000,1000000,2500000,5000000 \
+    -r 5000,10000,25000,40000,50000,100000,250000,500000,1000000,2500000,5000000 \
     -o $OUTPUT_DIR2/${sample_name}.mcool \
     $OUTPUT_DIR2/${sample_name}.cool
 
-for res in 5000 10000 25000 50000 100000 250000 500000 1000000 2500000 5000000
+for res in 5000 10000 25000 40000 50000 100000 250000 500000 1000000 2500000 5000000
 do
     echo "Balancing resolution $res ..."
     cooler balance $OUTPUT_DIR2/${sample_name}.mcool::resolutions/$res
