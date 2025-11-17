@@ -46,7 +46,7 @@ BOWTIE2_LOCAL_OPTIONS =  --very-sensitive -L 20 --score-min G,20,8  --local --re
 #######################################################################
 
 REFERENCE_GENOME = GRCh38.primary_assembly.genome.fa
-GENOME_SIZE = /gpfs/data/HernandoLab/home/bericp01/genome_references/Hg38_chorm_size.bed
+GENOME_SIZE = Hg38_chorm_size.bed
 
 #######################################################################
 ## Allele specific analysis
@@ -65,7 +65,7 @@ REPORT_CAPTURE_REPORTER = 1
 ## Digestion Hi-C
 #######################################################################
 
-GENOME_FRAGMENT = /gpfs/data/HernandoLab/home/bericp01/genome_references/hg38_arima.bed
+GENOME_FRAGMENT = hg38_arima.bed
 LIGATION_SITE = GATCGATC,GANTGATC,GANTANTC,GATCANTC
 MIN_FRAG_SIZE = 20
 MAX_FRAG_SIZE = 1000000
