@@ -5,7 +5,7 @@ CHR_SIZE=Hg38_chrom_size.bed #hg38 bed file containing two column chromosome nam
 TMP=tmp_folder
 OUTPUT_DIR=output_matrix
 RESFRAG=hg38_arima.bed #hg38 genome digested with arima enzymes
-sample_name=("501mel" "SKMEL-147" "SKMEL-5")
+sample_name=("501mel" "SKMEL-147" "SKMEL-5" "A375-IgG-HiChIP" "A375-shH2-K27ac-HiChIP" "A375-shH3-K27ac-HiChIP" "A375-shNTC-K27ac-HiChIP-rep1" "A375-shNTC-K27ac-HiChIP-rep2")
 # Run HiC-Pro
 
 HiC-Pro_3.1.0/bin/HiC-Pro -i $DATA_DIR -o $OUTPUT_DIR -c $CONFIG -p
