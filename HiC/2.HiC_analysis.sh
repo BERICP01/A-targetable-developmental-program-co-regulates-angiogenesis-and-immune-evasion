@@ -5,6 +5,7 @@ OUTPUT3=loop_folder
 GC=hg38_gc_cov_100kb.tsv # a genome-wide gc scoring file of 100kb bin size
 TRAINING=high-confidence.650million #download from Peakachu github repository (https://github.com/tariks/peakachu)
 BED=MACS2_CTCF
+sample_name=("501mel" "SKMEL-147" "SKMEL-5")
 
 # Compartments AB calling
 
