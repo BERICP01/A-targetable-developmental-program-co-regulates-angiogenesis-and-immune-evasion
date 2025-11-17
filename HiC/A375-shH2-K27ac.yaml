@@ -1,0 +1,6 @@
+peaks:
+ - A375-shH2-K27ac_narrow_Peaks.bed
+resfrags:
+ - hg38_arima.bed
+hicpro_output:
+ - HiC-Pro
