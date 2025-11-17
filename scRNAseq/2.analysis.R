@@ -581,15 +581,6 @@ DefaultAssay(subsetT) <- "RNA"
 subsetT <- NormalizeData(subsetT)
 subsetT  <- FindNeighbors(subsetT, dims = 1:30, reduction = "pca")
 subsetT  <- FindClusters(subsetT , resolution = 0.6, graph.name = "SCT_snn")
-# Get gene names (features) from RNA assay
-genes <- rownames(subsetT@assays$RNA@features)
-
-# Save to txt
-write.table(genes,
-            file = "genes_in_subsetT.txt",
-            quote = FALSE,
-            row.names = FALSE,
-            col.names = FALSE)
 
 pdf(file.path(DirRes, "18.UMAP_Tcells.pdf"), width = 10, height = 7)
 DimPlot(subsetT, group.by = "predicted.celltype.l2", label = F)+
@@ -604,18 +595,9 @@ DimPlot(subsetT, group.by = "predicted.celltype.l2", split.by = 'group', label =
     legend.title = element_text(size = 8),
     legend.key.size = unit(0.4, "cm")
   )
-DimPlot(subsetT, group.by = "seurat_clusters", label = F)+
-  theme(
-    legend.text = element_text(size = 6),
-    legend.title = element_text(size = 8),
-    legend.key.size = unit(0.4, "cm")
-  )
 DimPlot(subsetT, group.by = "group")
-#FeaturePlot(subsetT, features = '', order =T)
 dev.off()
-combined.markers <- FindAllMarkers(subsetT, only.pos = TRUE, min.pct = 0.50, logfc.threshold = 0.5)
-combined.markers %>% group_by(cluster) %>% slice_max(n = 2, order_by = avg_log2FC)
-write.csv(combined.markers, file = "18.subsetT.markers.csv")
+
 
 # Extract immune cells percentage
 meta <- pbmcsca@meta.data
@@ -626,13 +608,3 @@ df <- df %>%
   dplyr::mutate(percent = count / sum(count) * 100)
 write.csv(df, file.path(DirRes, "17.Immune_annotation_percent.csv"), row.names = FALSE)
 
-Idents(pbmcsca) <- 'predicted.celltype.l2'
-pbmcsca <- NormalizeData(pbmcsca)
-
-
-
-subsetT <- subset(pbmcsca, idents = c("CD8 Proliferating", "CD8 TCM", "CD8 TEM", "CD8 Naive"))
-Idents(subsetT) <- 'group'
-DE.T <- FindMarkers(subsetT, group.by = "group", ident.1 = "shHoxd13", ident.2 = "shNTC", 
-                       assay = "RNA", logfc.threshold = 0.5)
-write.csv(DE.T, "18.DE_Tcells.csv")
