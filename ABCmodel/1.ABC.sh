@@ -32,7 +32,8 @@ python ABC-Enhancer-Gene-Prediction/workflow/scripts/run.neighborhoods.py \
 --cellType ${SAMPLE} \
 --outdir $OUTPUT/${SAMPLE}
 
-###IMPORTANT!!! KR normalization from juicer is not ideal and some chromosomes may not have BP 5000, modify "juicebox_dump.py" by replacing all KR with VC.
+###IMPORTANT!!! KR normalization from juicer is not ideal and some chromosomes may not have BP 5000, modify "juicebox_dump.py" by replacing all KR with VC. 
+#I have included a modified version of the juicebox_dump.py script you can overwrite with the original one.
 python ABC-Enhancer-Gene-Prediction/workflow/scripts/juicebox_dump.py \
 --hic_file $INPUT/${SAMPLE}.allValidPairs.hic \
 --juicebox "java -jar $JUICER" \
@@ -41,6 +42,7 @@ python ABC-Enhancer-Gene-Prediction/workflow/scripts/juicebox_dump.py \
 --include_raw \
 
 ###IMPORTANT!!! Before running, remove "interpolate_nan=False" and turn "allow_vc=True" from "compute_powerlaw_fit_from_hic.py".
+#I have included a modified version of the compute_powerlaw_fit_from_hic.py script you can overwrite with the original one.
 #Fit HiC data to powerlaw model and extract parameters
 python ABC-Enhancer-Gene-Prediction/workflow/scripts/compute_powerlaw_fit_from_hic.py \
 --hic_dir $OUTPUT/${SAMPLE}/HiC \
