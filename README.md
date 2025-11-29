@@ -14,3 +14,5 @@ Please refer as well to Matherial and Methods of the paper to have a detailed li
 - STAR 2.7.7a
 - trimgalore 0.6.6
 - pipseeker 3.3.0
+
+If you have any trouble, contact me, I am very responsive ;)!
